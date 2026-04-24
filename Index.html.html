@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Madar24 | مدار 24</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --navy:#0B1F33;
+      --blue:#1565C0;
+      --cyan:#22B8CF;
+      --gold:#F4B740;
+      --slate:#5E6B78;
+      --light:#F5F8FB;
+      --white:#FFFFFF;
+      --border:#E4EAF0;
+      --green:#22C55E;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family:"Tajawal", Arial, sans-serif;
+      background:var(--white);
+      color:var(--navy);
+      line-height:1.7;
+    }
+    a{text-decoration:none;color:inherit}
+    .topbar{
+      background:#071827;
+      color:#DDEAF5;
+      font-size:14px;
+      padding:8px 6%;
+      display:flex;
+      justify-content:space-between;
+      gap:16px;
+      flex-wrap:wrap;
+    }
+    .nav{
+      height:76px;
+      padding:0 6%;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      background:#fff;
+      border-bottom:1px solid var(--border);
+      position:sticky;
+      top:0;
+      z-index:10;
+    }
+    .logo{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      font-weight:900;
+      letter-spacing:.2px;
+    }
+    .logo-mark{
+      width:44px;height:44px;border-radius:14px;
+      background:linear-gradient(135deg,var(--blue),var(--cyan));
+      display:grid;place-items:center;
+      color:#fff;font-weight:900;font-size:20px;
+      box-shadow:0 12px 25px rgba(21,101,192,.18);
+    }
+    .logo small{display:block;color:var(--slate);font-weight:500;font-size:12px;margin-top:-4px}
+    .links{display:flex;gap:28px;color:#304152;font-weight:700;font-size:15px}
+    .nav-cta{display:flex;gap:10px;align-items:center}
+    .btn{
+      display:inline-flex;align-items:center;justify-content:center;gap:8px;
+      border-radius:14px;padding:12px 20px;font-weight:800;
+      transition:.2s;white-space:nowrap;
+    }
+    .btn-primary{background:var(--blue);color:#fff;box-shadow:0 14px 30px rgba(21,101,192,.22)}
+    .btn-primary:hover{transform:translateY(-2px)}
+    .btn-secondary{background:#EAF3FF;color:var(--blue)}
+    .btn-dark{background:var(--navy);color:#fff}
+    .hero{
+      position:relative;
+      min-height:680px;
+      padding:76px 6% 84px;
+      overflow:hidden;
+      background:
+        radial-gradient(circle at 15% 20%, rgba(34,184,207,.18), transparent 28%),
+        linear-gradient(135deg,#F7FAFD 0%,#EEF5FA 46%,#FFFFFF 100%);
+    }
+    .hero-grid{
+      display:grid;
+      grid-template-columns: 1.05fr .95fr;
+      gap:50px;
+      align-items:center;
+      max-width:1240px;
+      margin:auto;
+    }
+    .badge{
+      display:inline-flex;
+      gap:8px;
+      align-items:center;
+      background:#fff;
+      border:1px solid var(--border);
+      padding:8px 14px;
+      border-radius:999px;
+      color:var(--blue);
+      font-weight:800;
+      box-shadow:0 10px 28px rgba(11,31,51,.06);
+    }
+    h1{
+      font-size:58px;
+      line-height:1.12;
+      margin:22px 0 18px;
+      letter-spacing:-1.4px;
+    }
+    .gradient-text{color:var(--blue)}
+    .hero p{
+      font-size:21px;
+      color:#425466;
+      max-width:640px;
+      margin:0 0 30px;
+    }
+    .hero-actions{display:flex;gap:14px;flex-wrap:wrap;margin:30px 0}
+    .trust-row{display:flex;gap:22px;flex-wrap:wrap;margin-top:28px}
+    .trust-item{
+      display:flex;align-items:center;gap:9px;color:#394B5E;font-weight:700;
+    }
+    .check{
+      width:24px;height:24px;border-radius:50%;background:#EAFBF0;color:var(--green);
+      display:grid;place-items:center;font-weight:900;
+    }
+    .visual{
+      position:relative;
+      min-height:520px;
+      border-radius:34px;
+      background:linear-gradient(145deg,#0B1F33,#11395E);
+      box-shadow:0 30px 80px rgba(11,31,51,.22);
+      overflow:hidden;
+      border:1px solid rgba(255,255,255,.18);
+      padding:28px;
+    }
+    .visual:before{
+      content:"";
+      position:absolute;inset:0;
+      background:
+        linear-gradient(90deg,rgba(255,255,255,.07) 1px,transparent 1px),
+        linear-gradient(rgba(255,255,255,.07) 1px,transparent 1px);
+      background-size:58px 58px;
+      opacity:.35;
+    }
+    .storage-showcase{
+      position:relative;
+      z-index:2;
+      height:100%;
+      display:flex;
+      flex-direction:column;
+      gap:18px;
+    }
+    .showcase-top{
+      display:flex;
+      justify-content:space-between;
+      gap:18px;
+      align-items:center;
+      color:#fff;
+    }
+    .showcase-title h3{
+      font-size:34px;
+      line-height:1.15;
+      margin:0 0 8px;
+    }
+    .showcase-title p{
+      margin:0;
+      color:#BFD0E1;
+      font-size:15px;
+      max-width:330px;
+    }
+    .showcase-badge{
+      width:128px;height:128px;border-radius:32px;
+      background:rgba(255,255,255,.09);
+      border:1px solid rgba(255,255,255,.16);
+      display:grid;place-items:center;
+      text-align:center;
+      box-shadow:inset 0 0 0 1px rgba(255,255,255,.04);
+      flex:0 0 auto;
+    }
+    .showcase-badge strong{
+      display:block;
+      font-size:36px;
+      color:var(--cyan);
+      line-height:1;
+    }
+    .showcase-badge span{
+      display:block;
+      color:#DDEAF5;
+      font-weight:800;
+      margin-top:8px;
+      font-size:13px;
+    }
+    .storage-illustration{
+      background:rgba(255,255,255,.08);
+      border:1px solid rgba(255,255,255,.14);
+      border-radius:28px;
+      padding:24px;
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:18px;
+      align-items:center;
+      min-height:260px;
+    }
+    .storage-unit{
+      position:relative;
+      min-height:220px;
+      border-radius:24px;
+      background:linear-gradient(180deg,#F9FCFF,#D8E5EF);
+      border:2px solid rgba(255,255,255,.75);
+      overflow:hidden;
+      box-shadow:0 22px 40px rgba(0,0,0,.18), inset 0 -22px 35px rgba(11,31,51,.13);
+    }
+    .storage-unit:before{
+      content:"";
+      position:absolute;left:0;right:0;top:0;height:42px;
+      background:linear-gradient(90deg,var(--cyan),var(--blue));
+    }
+    .door-lines{
+      position:absolute;left:34px;right:34px;top:68px;height:94px;
+      background:
+        repeating-linear-gradient(180deg,rgba(11,31,51,.12) 0,rgba(11,31,51,.12) 5px,transparent 5px,transparent 17px);
+      border-radius:14px;
+    }
+    .storage-boxes{
+      position:absolute;right:32px;bottom:28px;display:flex;gap:8px;align-items:end;
+    }
+    .box{
+      width:44px;height:44px;border-radius:8px;background:#1E88E5;
+      box-shadow:0 10px 18px rgba(21,101,192,.24);
+      position:relative;
+    }
+    .box.small{width:34px;height:34px;background:#22B8CF}
+    .box.tall{height:58px;background:#1565C0}
+    .storage-lock{
+      position:absolute;left:28px;bottom:28px;width:56px;height:56px;border-radius:18px;
+      background:#0B1F33;color:#fff;display:grid;place-items:center;font-size:26px;
+      box-shadow:0 12px 22px rgba(11,31,51,.25);
+    }
+    .feature-stack{
+      display:grid;
+      gap:12px;
+    }
+    .mini-feature{
+      display:flex;gap:12px;align-items:center;
+      background:#fff;border-radius:18px;padding:14px 16px;
+      box-shadow:0 15px 28px rgba(0,0,0,.12);
+    }
+    .mini-icon{
+      width:42px;height:42px;border-radius:14px;
+      background:#EAF3FF;color:var(--blue);
+      display:grid;place-items:center;font-size:21px;flex:0 0 auto;
+    }
+    .mini-feature strong{display:block;color:var(--navy);font-size:16px;line-height:1.2}
+    .mini-feature span{display:block;color:var(--slate);font-size:12px;font-weight:700;margin-top:3px}
+    .showcase-bottom{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:12px;
+    }
+    .metric{
+      background:rgba(255,255,255,.09);
+      border:1px solid rgba(255,255,255,.13);
+      border-radius:20px;
+      padding:15px;
+      color:#fff;
+      text-align:center;
+    }
+    .metric strong{display:block;font-size:22px;color:var(--cyan);line-height:1}
+    .metric span{display:block;font-size:12px;color:#C8D7E6;margin-top:7px;font-weight:800}
+    .pulse{
+      width:11px;height:11px;border-radius:50%;background:var(--green);
+      display:inline-block;margin-left:8px;box-shadow:0 0 0 8px rgba(34,197,94,.13);
+    }
+    .section{padding:82px 6%}
+    .container{max-width:1240px;margin:auto}
+    .section-head{
+      display:flex;justify-content:space-between;align-items:end;gap:24px;margin-bottom:34px;
+    }
+    .section-head h2{font-size:38px;margin:0;letter-spacing:-.7px}
+    .section-head p{color:var(--slate);font-size:18px;max-width:570px;margin:0}
+    .features{
+      display:grid;grid-template-columns:repeat(4,1fr);gap:18px;
+    }
+    .feature{
+      background:#fff;border:1px solid var(--border);border-radius:24px;
+      padding:26px;box-shadow:0 16px 38px rgba(11,31,51,.05);
+    }
+    .icon{
+      width:48px;height:48px;border-radius:16px;
+      display:grid;place-items:center;
+      background:#EAF3FF;color:var(--blue);font-size:24px;margin-bottom:16px;
+    }
+    .feature h3{margin:0 0 8px;font-size:21px}
+    .feature p{margin:0;color:var(--slate)}
+    .audiences{
+      background:var(--navy);
+      color:#fff;
+    }
+    .audiences .section-head p{color:#B9C7D5}
+    .pill-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+    .pill{
+      background:rgba(255,255,255,.08);
+      border:1px solid rgba(255,255,255,.13);
+      border-radius:18px;padding:18px;font-weight:800;
+      display:flex;align-items:center;gap:10px;
+    }
+    .plans{background:var(--light)}
+    .plan-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+    .plan{
+      background:#fff;border:1px solid var(--border);border-radius:26px;padding:26px;
+      box-shadow:0 18px 44px rgba(11,31,51,.06);
+      position:relative;
+    }
+    .plan.popular{border:2px solid var(--blue);transform:translateY(-8px)}
+    .tag{
+      position:absolute;top:18px;left:18px;background:#FFF5D8;color:#9B6A00;
+      padding:5px 10px;border-radius:999px;font-size:12px;font-weight:900;
+    }
+    .plan h3{font-size:26px;margin:0 0 8px}
+    .plan .size{font-size:36px;font-weight:900;color:var(--blue);margin:12px 0}
+    .plan p{color:var(--slate);margin:0 0 18px}
+    .plan ul{list-style:none;padding:0;margin:0 0 22px;color:#405366}
+    .plan li{margin:8px 0}
+    .process-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;counter-reset:step}
+    .step{
+      background:#fff;border:1px solid var(--border);border-radius:24px;padding:28px;
+      position:relative;
+    }
+    .step:before{
+      counter-increment:step;content:counter(step);
+      position:absolute;top:-18px;right:24px;width:42px;height:42px;border-radius:14px;
+      background:var(--blue);color:#fff;display:grid;place-items:center;font-weight:900;
+      box-shadow:0 12px 26px rgba(21,101,192,.22);
+    }
+    .step h3{margin:18px 0 8px}
+    .step p{margin:0;color:var(--slate)}
+    .cta{
+      padding:72px 6%;
+      background:
+        radial-gradient(circle at 20% 20%,rgba(244,183,64,.2),transparent 26%),
+        linear-gradient(135deg,#0B1F33,#123E67);
+      color:#fff;
+    }
+    .cta-card{
+      max-width:1240px;margin:auto;
+      display:flex;justify-content:space-between;align-items:center;gap:24px;flex-wrap:wrap;
+    }
+    .cta h2{font-size:42px;margin:0 0 10px}
+    .cta p{font-size:19px;color:#C9D7E5;margin:0}
+    footer{
+      background:#071827;color:#B8C6D5;padding:34px 6%;
+    }
+    .footer-inner{max-width:1240px;margin:auto;display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
+    @media (max-width: 980px){
+      .links{display:none}
+      .hero-grid{grid-template-columns:1fr}
+      h1{font-size:43px}
+      .features,.pill-grid,.plan-grid,.process-grid{grid-template-columns:1fr 1fr}
+      .visual{min-height:520px}
+    }
+    @media (max-width: 620px){
+      .topbar{display:none}
+      .nav{padding:0 4%;height:68px}
+      .nav-cta .btn-secondary{display:none}
+      .hero{padding:48px 4% 60px}
+      h1{font-size:34px}
+      .hero p{font-size:18px}
+      .features,.pill-grid,.plan-grid,.process-grid{grid-template-columns:1fr}
+      .section{padding:58px 4%}
+      .section-head{display:block}
+      .visual{min-height:auto;border-radius:24px;padding:18px}
+      .storage-illustration{grid-template-columns:1fr;padding:16px}
+      .showcase-bottom{grid-template-columns:1fr}
+      .showcase-badge{width:104px;height:104px}
+      .showcase-title h3{font-size:27px}
+    }
+  </style>
+</head>
+<body>
+  <div class="topbar">
+    <div>مساحات تخزين مرنة وآمنة للشركات والتجار</div>
+    <div>وصول 24/7 • تكييف • حراسة • مراقبة</div>
+  </div>
+
+  <nav class="nav">
+    <a class="logo" href="#">
+      <span class="logo-mark">24</span>
+      <span>مدار 24 <small>Madar24 Smart Storage</small></span>
+    </a>
+    <div class="links">
+      <a href="#features">المزايا</a>
+      <a href="#audiences">نخدم من؟</a>
+      <a href="#plans">المساحات</a>
+      <a href="#process">طريقة العمل</a>
+    </div>
+    <div class="nav-cta">
+      <a class="btn btn-secondary" href="#">واتساب</a>
+      <a class="btn btn-primary" href="#plans">احجز مساحة</a>
+    </div>
+  </nav>
+
+  <header class="hero">
+    <div class="hero-grid">
+      <div>
+        <div class="badge"><span class="pulse"></span> متاح على مدار الساعة</div>
+        <h1>مساحات تخزين ذكية وآمنة <span class="gradient-text">لمخزونك التجاري</span></h1>
+        <p>
+          مدار 24 يوفر مساحات تخزينية شهرية بمساحات وأسعار مختلفة، مزودة بالتكييف، أنظمة المراقبة،
+          الحراسة الأمنية، ووصول مستمر لمخزونك في أي وقت.
+        </p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#plans">اطلب عرض سعر</a>
+          <a class="btn btn-dark" href="#process">كيف تعمل الخدمة؟</a>
+        </div>
+        <div class="trust-row">
+          <div class="trust-item"><span class="check">✓</span> عقود شهرية مرنة</div>
+          <div class="trust-item"><span class="check">✓</span> مناسبة للشركات والتجار</div>
+          <div class="trust-item"><span class="check">✓</span> منشأة مرخصة ومنظمة</div>
+        </div>
+      </div>
+
+      <div class="visual">
+        <div class="storage-showcase">
+          <div class="showcase-top">
+            <div class="showcase-title">
+              <h3>مساحتك جاهزة<br>متى ما احتجتها</h3>
+              <p>وحدة تخزين خاصة، بيئة منظمة، ودخول آمن على مدار الساعة.</p>
+            </div>
+            <div class="showcase-badge">
+              <div>
+                <strong>24/7</strong>
+                <span>وصول مباشر</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="storage-illustration">
+            <div class="storage-unit">
+              <div class="door-lines"></div>
+              <div class="storage-boxes">
+                <span class="box small"></span>
+                <span class="box tall"></span>
+                <span class="box"></span>
+              </div>
+              <div class="storage-lock">🔒</div>
+            </div>
+
+            <div class="feature-stack">
+              <div class="mini-feature">
+                <div class="mini-icon">🛡️</div>
+                <div><strong>أمان ومراقبة</strong><span>كاميرات وحراسة وأنظمة دخول</span></div>
+              </div>
+              <div class="mini-feature">
+                <div class="mini-icon">❄️</div>
+                <div><strong>تكييف وتنظيم</strong><span>بيئة مناسبة للمخزون التجاري</span></div>
+              </div>
+              <div class="mini-feature">
+                <div class="mini-icon">📦</div>
+                <div><strong>مساحات مرنة</strong><span>اختر الحجم المناسب ووسّع لاحقًا</span></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="showcase-bottom">
+            <div class="metric"><strong>شهري</strong><span>اشتراك مرن</span></div>
+            <div class="metric"><strong>مرخص</strong><span>وفق الاشتراطات</span></div>
+            <div class="metric"><strong>B2B</strong><span>للشركات والتجار</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <section id="features" class="section">
+    <div class="container">
+      <div class="section-head">
+        <h2>كل ما يحتاجه مخزونك… في مكان واحد</h2>
+        <p>صممنا مدار 24 ليخدم احتياجات التخزين التجاري اليومية، من الأمان والمرونة إلى سهولة الوصول والتشغيل.</p>
+      </div>
+      <div class="features">
+        <div class="feature"><div class="icon">🛡️</div><h3>أمان ومراقبة</h3><p>كاميرات مراقبة، حراسة أمنية، وأنظمة دخول منظمة.</p></div>
+        <div class="feature"><div class="icon">❄️</div><h3>بيئة مكيّفة</h3><p>مناسبة للمنتجات التي تحتاج بيئة تخزين مستقرة ومنظمة.</p></div>
+        <div class="feature"><div class="icon">🔑</div><h3>وصول 24/7</h3><p>ادخل إلى مساحتك الخاصة وقت ما تحتاج بدون انتظار.</p></div>
+        <div class="feature"><div class="icon">📦</div><h3>مساحات مرنة</h3><p>اختر المساحة المناسبة وغيّرها حسب نمو مخزونك.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="audiences" class="section audiences">
+    <div class="container">
+      <div class="section-head">
+        <h2>مصمم للشركات والتجار</h2>
+        <p>حل عملي للتجار الذين يحتاجون بديلًا مرنًا وآمنًا بدل الالتزام بمستودع كامل.</p>
+      </div>
+      <div class="pill-grid">
+        <div class="pill">🏢 شركات صغيرة ومتوسطة</div>
+        <div class="pill">🍱 تجار الأغذية الجافة</div>
+        <div class="pill">💊 موردي المواد الطبية</div>
+        <div class="pill">🌸 تجار العطور والتجميل</div>
+        <div class="pill">🛒 متاجر إلكترونية</div>
+        <div class="pill">🚚 موزعون ووكلاء</div>
+        <div class="pill">🎁 مخزون موسمي</div>
+        <div class="pill">📄 أرشفة ومستندات</div>
+      </div>
+    </div>
+  </section>
+
+  <section id="plans" class="section plans">
+    <div class="container">
+      <div class="section-head">
+        <h2>اختر المساحة المناسبة لك</h2>
+        <p>باقات مرنة تبدأ من المساحات الصغيرة إلى حلول مخصصة للشركات.</p>
+      </div>
+      <div class="plan-grid">
+        <div class="plan">
+          <h3>Small</h3>
+          <div class="size">S</div>
+          <p>للبداية أو المخزون الخفيف.</p>
+          <ul><li>✓ عقد شهري</li><li>✓ دخول منظم</li><li>✓ مراقبة أمنية</li></ul>
+          <a class="btn btn-secondary" href="#">استفسر</a>
+        </div>
+        <div class="plan popular">
+          <span class="tag">الأكثر طلبًا</span>
+          <h3>Medium</h3>
+          <div class="size">M</div>
+          <p>للتجار والشركات ذات المخزون المتوسط.</p>
+          <ul><li>✓ مساحة أكبر</li><li>✓ تكييف</li><li>✓ وصول 24/7</li></ul>
+          <a class="btn btn-primary" href="#">اطلب عرض سعر</a>
+        </div>
+        <div class="plan">
+          <h3>Large</h3>
+          <div class="size">L</div>
+          <p>للشركات والموردين والكميات الكبيرة.</p>
+          <ul><li>✓ وحدات متعددة</li><li>✓ دعم تشغيلي</li><li>✓ حلول توسع</li></ul>
+          <a class="btn btn-secondary" href="#">استفسر</a>
+        </div>
+        <div class="plan">
+          <h3>Custom</h3>
+          <div class="size">+</div>
+          <p>حلول مخصصة حسب طبيعة نشاطك.</p>
+          <ul><li>✓ متطلبات خاصة</li><li>✓ مساحات مخصصة</li><li>✓ عقود للشركات</li></ul>
+          <a class="btn btn-secondary" href="#">تواصل معنا</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="process" class="section">
+    <div class="container">
+      <div class="section-head">
+        <h2>كيف تبدأ؟</h2>
+        <p>تجربة بسيطة من أول استفسار إلى استلام المساحة.</p>
+      </div>
+      <div class="process-grid">
+        <div class="step"><h3>حدد احتياجك</h3><p>اختر نوع المخزون والمساحة التقريبية.</p></div>
+        <div class="step"><h3>احصل على العرض</h3><p>نقترح لك أفضل مساحة وباقة شهرية مناسبة.</p></div>
+        <div class="step"><h3>وقّع واستلم</h3><p>استلم مساحتك الخاصة داخل منشأة مجهزة.</p></div>
+        <div class="step"><h3>ادخل متى احتجت</h3><p>وصول مستمر لمخزونك على مدار الساعة.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta">
+    <div class="cta-card">
+      <div>
+        <h2>جاهز تخزّن مخزونك بطريقة أذكى؟</h2>
+        <p>ابدأ مع مدار 24 وخفّض تكلفة التخزين بدون التضحية بالأمان أو المرونة.</p>
+      </div>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="#">احجز مساحتك الآن</a>
+        <a class="btn btn-secondary" href="#">تواصل واتساب</a>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-inner">
+      <div><strong>مدار 24</strong><br/>Smart Storage Spaces. Accessible 24/7.</div>
+      <div>© 2026 Madar24. All rights reserved.</div>
+    </div>
+  </footer>
+</body>
+</html>
